@@ -6,8 +6,6 @@ public class Driver : MonoBehaviour
 {
     [SerializeField] float steerSpeed = 250;
     [SerializeField] float moveSpeed = 15;
-    [SerializeField] float slowSpeed = 12;
-    [SerializeField] float boostSpeed = 23;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +29,13 @@ public class Driver : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other) 
     {
-        moveSpeed = slowSpeed;
+        moveSpeed = moveSpeed * 0.9f;
     }
     void OnTriggerEnter2D (Collider2D other) 
     {
         if (other.tag == "Booster")
         {
-            moveSpeed = boostSpeed;
+            moveSpeed = moveSpeed * 1.1f;
         }
     }
 }
